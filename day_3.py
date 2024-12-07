@@ -1,5 +1,6 @@
 import time
 import re
+import os
 
 def multiply(arg) -> int:
     return int(arg[4:len(arg)-1].split(",")[0])*int(arg[4:len(arg)-1].split(",")[1])
@@ -7,7 +8,7 @@ def multiply(arg) -> int:
 example = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"
 
 start_p1 = time.time()
-with open(r'C:\Users\vassi\dev\PythonVarious\Advent of Code 2024\inputs\Day 3', 'r') as file:
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 3"), 'r') as file:
     content = file.read()
 
 elements = re.findall(r"(mul\(\d{1,3},\d{1,3}\))", content)
