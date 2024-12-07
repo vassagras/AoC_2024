@@ -12,8 +12,9 @@ https://realpython.com/python-counter/
 import functools
 from collections import Counter
 import time
+import os
 
-file = open(r'C:\Users\vassi\dev\PythonVarious\Advent of Code 2024\inputs\Day1', 'r')
+file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 2"), 'r')
 
 left = []
 right = []

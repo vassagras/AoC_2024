@@ -1,8 +1,8 @@
 import time
-from collections import Counter
+import os
 
 start_p1 = time.time()
-file = open(r'C:\Users\vassi\dev\PythonVarious\Advent of Code 2024\inputs\Day 4', 'r')
+file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 4"), 'r')
 matrix = []
 counter = 0
 for l in file:

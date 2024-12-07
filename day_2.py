@@ -1,6 +1,7 @@
 import functools
 from collections import Counter
 import time
+import os
 
 def is_report_valid(report) -> bool:
     diff = []
@@ -17,7 +18,7 @@ def is_report_valid(report) -> bool:
             return True
     return False
 
-file= open(r'C:\Users\vassi\dev\PythonVarious\Advent of Code 2024\inputs\Day 2', 'r')
+file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 2"), 'r')
 
 '''
 start_p1 = time.time()

@@ -1,5 +1,6 @@
 import time
 import itertools
+import os
 
 def compute_equation(elements, operators):
     """
@@ -34,7 +35,7 @@ def compute_equation_v2(elements, operators):
     return _result
 
 start = time.time()
-file = open(r'C:\Users\vassi\dev\PythonVarious\Advent of Code 2024\inputs\Day 7', 'r')
+file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day  7"), 'r')
 p1_sum, p2_sum = 0, 0
 p1_ops, p2_ops = ["+", "*"], ["+", "*", "||"]
 for l in file:
