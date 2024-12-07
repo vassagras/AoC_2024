@@ -2,6 +2,12 @@ import time
 import itertools
 
 def compute_equation(elements, operators):
+    """
+
+    :param elements: numbers for calculating the test value
+    :param operators: operator combination
+    :return: result of the equation
+    """
     _result = elements[0]
     for i in range(1, len(elements)):
         if operators[i-1] == "+":
@@ -11,6 +17,12 @@ def compute_equation(elements, operators):
     return _result
 
 def compute_equation_v2(elements, operators):
+    """
+
+    :param elements: numbers for calculating the test value
+    :param operators: operator combination
+    :return: result of the equation
+    """
     _result = elements[0]
     for i in range(1, len(elements)):
         if operators[i-1] == "+":
@@ -23,19 +35,17 @@ def compute_equation_v2(elements, operators):
 
 start = time.time()
 file = open(r'C:\Users\vassi\dev\PythonVarious\Advent of Code 2024\inputs\Day 7', 'r')
-p1_sum = 0
-p2_sum = 0
-p1_ops = ["+", "*"]
-p2_ops = ["+", "*", "||"]
+p1_sum, p2_sum = 0, 0
+p1_ops, p2_ops = ["+", "*"], ["+", "*", "||"]
 for l in file:
-    expected_result = int(l.split(":")[0])
+    test_value = int(l.split(":")[0])
     numbers = [int(n) for n in l.split(":")[1].strip().split()]
     permutations = list(itertools.product(p1_ops, repeat=len(numbers) - 1))
     control_flag = False
     for perm in permutations:
         r = compute_equation(numbers, perm)
-        if r == expected_result:
-            p1_sum += expected_result
+        if r == test_value:
+            p1_sum += test_value
             control_flag = True
             break
 
@@ -43,8 +53,8 @@ for l in file:
         permutations_v2 = list(itertools.product(p2_ops, repeat=len(numbers) - 1))
         for perm in permutations_v2:
             r = compute_equation_v2(numbers, perm)
-            if r == expected_result:
-                p2_sum += expected_result
+            if r == test_value:
+                p2_sum += test_value
                 break
 final_result = p1_sum + p2_sum
 
