@@ -9,6 +9,17 @@ moves = {
 }
 
 def search_antinodes(start_pos, dif_x, dif_y, direction, x_limit, y_limit, nodes):
+    """
+
+    :param start_pos: current coordinates of the antenna
+    :param dif_x: distance on the x-axis between two antennas of the same type
+    :param dif_y: distance on the y-axis between two antennas of the same type
+    :param direction: direction towards which the search of new anti-nodes is conducted
+    :param x_limit: maximum number of rows
+    :param y_limit: maximum number of columns
+    :param nodes: list of anti-nodes identified so far
+    :return:
+    """
     move = moves[direction]
     cur_x = start_pos[0]
     cur_y = start_pos[1]
@@ -27,6 +38,8 @@ file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Da
 
 antennas = {}
 x_len, y_len = 0, 0
+# Read each line and store all the antenna's position creating a dictionary with the antenna types as keys and values
+# the coordinates of the antennas
 for i_index, line in enumerate(file):
     x_len = i_index
     for j_index, c in enumerate(line.replace('\n', '')):
