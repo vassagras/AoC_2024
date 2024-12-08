@@ -97,4 +97,3 @@ for antenna in antennas.keys():
 end = time.time()
 print("Part 2 result: {}".format(len(antinodes.union(antinodes_2))))
 print("The time of execution of above program is :", (end - start) * 10 ** 3, "ms")
-print()
