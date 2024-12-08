@@ -68,9 +68,9 @@ print("The time of execution of above program is :", (end - start) * 10 ** 3, "m
 print()
 
 antinodes_2 = set()
-for t_antenna in antennas.keys():
-    for i, a in enumerate(antennas[t_antenna]):
-        for _a in antennas[t_antenna][i+1:]:
+for antenna in antennas.keys():
+    for i, a in enumerate(antennas[antenna]):
+        for _a in antennas[antenna][i + 1:]:
             dx = a[0] - _a[0]
             dy = a[1] - _a[1]
 
