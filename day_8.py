@@ -5,8 +5,7 @@ start_p1 = time.time()
 file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 8"), 'r')
 
 antennas = {}
-x_len = 0
-y_len = 0
+x_len, y_len = 0, 0
 for i_index, line in enumerate(file):
     x_len = i_index
     for j_index, c in enumerate(line.replace('\n', '')):
@@ -18,9 +17,6 @@ for i_index, line in enumerate(file):
             antennas[c].append((i_index, j_index))
 x_len += 1
 y_len += 1
-print(antennas)
-print("{}x{}".format(x_len, y_len))
-print()
 
 antinodes = set()
 for antenna_type in antennas.keys():
