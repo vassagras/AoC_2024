@@ -20,7 +20,7 @@ def is_report_valid(report) -> bool:
 
 file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 2"), 'r')
 
-'''
+
 start_p1 = time.time()
 counter = 0
 for l in file:
@@ -63,4 +63,4 @@ for l in file:
 end_p2 = time.time()
 print("Part 2 result: {}".format(counter2))
 print("The time of execution of above program is :", (end_p2 - start_p2) * 10**3, "ms")
-print()
+print()'''
