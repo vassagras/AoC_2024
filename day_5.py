@@ -1,5 +1,6 @@
 import time
 import os
+from collections import defaultdict
 
 protocols = '''98,22,35,93,25,67,78,13,75,21,18,51,17,33,55,45,64,31,96,29,65
 41,43,66,36,91,15,98,25,67,78,75
@@ -207,17 +208,14 @@ protocols_test='''75,47,61,53,29
 
 start_p1 = time.time()
 file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 5"), 'r')
-proceeding_rules = {}
+proceeding_rules = defaultdict(set)
 for l in file:
     key = int(l.split("|")[0])
     val = int(l.split("|")[1])
-    if key in proceeding_rules.keys():
-        proceeding_rules[key].add(val)
-    else:
-        proceeding_rules[key] = set()
-        proceeding_rules[key].add(val)
+    proceeding_rules[key].add(val)
 
 middle_numbers = []
+incorrect = []
 for protocol in protocols.split("\n"):
     pages = [int(i) for i in list(protocol.split(","))]
     check_flags = []
@@ -229,6 +227,8 @@ for protocol in protocols.split("\n"):
             check_flags.append(len(pages[i+1:len(pages)]) == 0)
     if all(check_flags):
         middle_numbers.append(pages[len(pages) // 2])
+    else:
+        incorrect.append(pages)
 
 end_p1 = time.time()
 
@@ -236,3 +236,4 @@ print("Part 1 result: {}".format(sum(middle_numbers)))
 print("The time of execution of above program is :", (end_p1 - start_p1) * 10**3, "ms")
 print()
 
+print(incorrect)
