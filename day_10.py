@@ -29,7 +29,28 @@ def find_walk_trail(_x:int, _y:int, _m:list, _p: set):
 
     return
 
-start_p1 = time.time()
+
+def count_walk_trail(_x:int, _y:int, _m:list):
+    curr_height = _m[_x][_y]
+    cnt = 0
+    if curr_height == 9:
+        return 1
+    # check up
+    if _x > 0 and _m[_x - 1][_y] == curr_height + 1:
+        cnt += count_walk_trail(_x-1, _y, _m)
+    # check down
+    if _x < len(_m) - 1 and _m[_x + 1][_y] == curr_height + 1:
+        cnt += count_walk_trail(_x+1, _y, _m)
+    # check left
+    if _y > 0 and _m[_x][_y - 1] == curr_height + 1:
+        cnt += count_walk_trail(_x, _y-1, _m)
+    # check right
+    if _y < len(_m[_x]) - 1 and _m[_x][_y + 1] == curr_height + 1:
+        cnt += count_walk_trail(_x, _y + 1, _m)
+
+    return cnt
+
+start = time.time()
 matrix = []
 file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 10"), 'r')
 for l in file:
@@ -48,7 +69,17 @@ for th in trailheads:
     find_walk_trail(th[0], th[1], matrix, final_pos)
     counter += len(final_pos)
 
-end_p1 = time.time()
+end = time.time()
 print("Part 1 result: {}".format(counter))
-print("The time of execution of above program is :", (end_p1 - start_p1) * 10**3, "ms")
+print("The time of execution of above program is :", (end - start) * 10 ** 3, "ms")
+print()
+
+start = time.time()
+counter = 0
+for th in trailheads:
+    counter += count_walk_trail(th[0], th[1], matrix)
+
+end = time.time()
+print("Part 2 result: {}".format(counter))
+print("The time of execution of above program is :", (end - start) * 10 ** 3, "ms")
 print()
