@@ -2,6 +2,7 @@ import time
 import re
 import os
 from sympy import symbols, Eq, solve, Integer
+
 start = time.time()
 with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 13"), 'r') as f:
     lines = f.readlines()
