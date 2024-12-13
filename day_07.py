@@ -35,7 +35,7 @@ def compute_equation_v2(elements, operators):
     return _result
 
 start = time.time()
-file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day  7"), 'r')
+file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 07"), 'r')
 p1_sum, p2_sum = 0, 0
 p1_ops, p2_ops = ["+", "*"], ["+", "*", "||"]
 for l in file:

@@ -34,7 +34,7 @@ def search_antinodes(start_pos, dif_x, dif_y, direction, x_limit, y_limit, nodes
     return
 
 start = time.time()
-file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 8"), 'r')
+file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 08"), 'r')
 
 antennas = {}
 x_len, y_len = 0, 0

@@ -207,7 +207,7 @@ protocols_test='''75,47,61,53,29
 97,13,75,29,47'''
 
 start_p1 = time.time()
-file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 5"), 'r')
+file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 05"), 'r')
 proceeding_rules = defaultdict(set)
 for l in file:
     key = int(l.split("|")[0])

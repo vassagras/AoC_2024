@@ -18,7 +18,7 @@ def is_report_valid(report) -> bool:
             return True
     return False
 
-file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 2"), 'r')
+file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 02"), 'r')
 
 
 start_p1 = time.time()

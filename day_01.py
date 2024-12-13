@@ -14,7 +14,7 @@ from collections import Counter
 import time
 import os
 
-file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 2"), 'r')
+file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 01"), 'r')
 
 left = []
 right = []

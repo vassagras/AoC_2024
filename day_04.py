@@ -2,7 +2,7 @@ import time
 import os
 
 start_p1 = time.time()
-file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 4"), 'r')
+file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 04"), 'r')
 matrix = []
 counter = 0
 for l in file:
