@@ -2,13 +2,16 @@ import collections
 import time
 import os
 
-start_p1 = time.time()
+start = time.time()
 
 with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 09"), 'r') as file:
     disk_map = file.read()
 
+# List representing the disk map
 blocks = []
+# list with the indexes of the disk map with all the free spaces
 free_space_indexes = []
+# counter for the ID numbers
 id_nbr = 0
 index = 0
 space_flag = False
@@ -29,7 +32,7 @@ for c in disk_map:
         space_flag = True
         id_nbr += 1
 
-print("".join(blocks))
+#print("".join(blocks))
 
 main_index = len(blocks) - 1
 for i in range(0, len(free_space_indexes)):
@@ -42,12 +45,12 @@ for i in range(0, len(free_space_indexes)):
     blocks[main_index] = "."
     #print("".join(blocks))
 
-print("".join(blocks))
+#print("".join(blocks))
 checksum = sum([i*int(val) for i, val in enumerate(blocks[:main_index+1])])
 
-end_p1 = time.time()
+end = time.time()
 print("Part 1 result: {}".format(checksum))
-print("The time of execution of above program is :", (end_p1 - start_p1) * 10**3, "ms")
+print("The time of execution of above program is :", (end - start) * 10 ** 3, "ms")
 print()
 
 
