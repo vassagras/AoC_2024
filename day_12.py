@@ -1,7 +1,6 @@
 import time
 import os
 
-# Flood-fill recursive algorithm to identify the area of the shape
 def identify_area(plant_type, x, y, plot, area):
     """
 
