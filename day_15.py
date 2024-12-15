@@ -2,6 +2,11 @@ import time
 import os
 
 def get_move_diff(move_direction):
+    """
+
+    :param move_direction: direction of the move i.e., <>v^
+    :return: return the dx and dy based on the direction
+    """
     if move_direction == "^":
         return -1, 0
     elif move_direction == "v":
@@ -13,6 +18,14 @@ def get_move_diff(move_direction):
     return 0, 0
 
 def move_robot(x, y, move_direction, wh_map):
+    """
+
+    :param x: current x-coordinate of the robot
+    :param y: current y-coordinate of the robot
+    :param move_direction: direction of the move i.e., <>v^
+    :param wh_map: warehouse map in form of a 2D array
+    :return: the coordinates of the robot after considering the current move
+    """
     dx, dy = get_move_diff(move_direction)
     new_x = x + dx
     new_y = y + dy
