@@ -10,7 +10,7 @@ def move_robot(pos, vel, max_x, max_y, seconds):
     :param max_x: number of rows of the map / grid
     :param max_y: number of cols of the map / grid
     :param seconds: number of seconds to elapse
-    :return:
+    :return: new position of the robot
     """
     cur_x = pos[0]
     cur_y = pos[1]
