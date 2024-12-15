@@ -47,7 +47,6 @@ def move_robot(x, y, move_direction, wh_map):
         else:
             return x, y
 
-
 start = time.time()
 file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 15"), 'r')
 file_moves = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 15 moves"), 'r')
