@@ -1,7 +1,7 @@
 import time
 import os
 
-def identify_area(plant_type, x, y, plot, area):
+def identify_area_coordinates(plant_type, x, y, plot, area):
     """
 
     :param plant_type: Type of plant
@@ -17,18 +17,18 @@ def identify_area(plant_type, x, y, plot, area):
         if plot[x][y] == plant_type:
             area.append((x, y))
             if (x + 1, y) not in area:
-                identify_area(plant_type, x + 1, y, plot, area)
+                identify_area_coordinates(plant_type, x + 1, y, plot, area)
             if (x - 1, y) not in area:
-                identify_area(plant_type, x - 1, y, plot, area)
+                identify_area_coordinates(plant_type, x - 1, y, plot, area)
             if (x, y + 1) not in area:
-                identify_area(plant_type, x, y + 1, plot, area)
+                identify_area_coordinates(plant_type, x, y + 1, plot, area)
             if (x, y - 1) not in area:
-                identify_area(plant_type, x, y - 1, plot, area)
+                identify_area_coordinates(plant_type, x, y - 1, plot, area)
             return
         else:
             return
 
-def identify_perimeter(area):
+def calculate_perimeter(area):
     """
 
     :param area: list of coordinates belonging to the area of the shape
@@ -57,9 +57,9 @@ for i in range(0, len(plot_map)):
     for j in range(0, len(plot_map[0])):
         if (i, j) not in visited:
             shape_area = []
-            identify_area(plot_map[i][j], i, j, plot_map, shape_area)
+            identify_area_coordinates(plot_map[i][j], i, j, plot_map, shape_area)
             visited.update(shape_area)
-            shape_perimeter = identify_perimeter(shape_area)
+            shape_perimeter = calculate_perimeter(shape_area)
             total_price += shape_perimeter * len(shape_area)
             print("A region of {} plants with area: {} and perimeter: {}".format(plot_map[i][j], len(shape_area), shape_perimeter))
 print()
