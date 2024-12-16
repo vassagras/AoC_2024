@@ -50,7 +50,7 @@ def calculate_vertices(area):
     vert = 0
     for p in area:
         x, y = p
-        # Check for vertices of type |_, _|, |-, -|
+        # Check for vertices of type |_, _|, |-, -| (outer corner)
         if (x + 1, y) not in area and (x, y - 1) not in area:
             vert += 1
         if (x - 1, y) not in area and (x, y - 1) not in area:
@@ -60,7 +60,7 @@ def calculate_vertices(area):
         if (x + 1, y) not in area and (x, y + 1) not in area:
             vert += 1
 
-        # Check of vertices which form a π
+        # Check of vertices which form a π (inner corner)
         if (x + 1, y) in area and (x, y + 1) in area and (x + 1, y + 1) not in area:
             vert += 1
         if (x - 1, y) in area and (x, y + 1) in area and (x - 1, y + 1) not in area:
