@@ -95,8 +95,8 @@ for i in range(0, len(plot_map)):
             vertices = calculate_vertices(shape_area)
             total_price += shape_perimeter * len(shape_area)
             total_price_2 += vertices * len(shape_area)
-            print("A region of {} plants with area: {}, perimeter: {} and vertices: {}".format(plot_map[i][j], len(shape_area), shape_perimeter, vertices))
-print()
+            #print("A region of {} plants with area: {}, perimeter: {} and vertices: {}".format(plot_map[i][j], len(shape_area), shape_perimeter, vertices))
+#print()
 
 end = time.time()
 print("Part 1 result: {}".format(total_price))
