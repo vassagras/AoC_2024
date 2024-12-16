@@ -41,6 +41,37 @@ def calculate_perimeter(area):
         per += 4 - len(set(neighbors).intersection(set(area)))
     return per
 
+def calculate_vertices(area):
+    """
+
+    :param area: list of coordinates belonging to the area of the shape
+    :return: returns the number of vertices
+    """
+    vert = 0
+    for p in area:
+        x, y = p
+        # Check for vertices of type |_, _|, |-, -|
+        if (x + 1, y) not in area and (x, y - 1) not in area:
+            vert += 1
+        if (x - 1, y) not in area and (x, y - 1) not in area:
+            vert += 1
+        if (x - 1, y) not in area and (x, y + 1) not in area:
+            vert += 1
+        if (x + 1, y) not in area and (x, y + 1) not in area:
+            vert += 1
+
+        # Check of vertices which form a π
+        if (x + 1, y) in area and (x, y + 1) in area and (x + 1, y + 1) not in area:
+            vert += 1
+        if (x - 1, y) in area and (x, y + 1) in area and (x - 1, y + 1) not in area:
+            vert += 1
+        if (x - 1, y) in area and (x, y - 1) in area and (x - 1, y - 1) not in area:
+            vert += 1
+        if (x + 1, y) in area and (x, y - 1) in area and (x + 1, y - 1) not in area:
+            vert += 1
+
+    return vert
+
 start = time.time()
 file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 12"), 'r')
 plot_map = []
@@ -52,6 +83,7 @@ for row in plot_map:
 print()
 
 total_price = 0
+total_price_2 = 0
 visited = set()
 for i in range(0, len(plot_map)):
     for j in range(0, len(plot_map[0])):
@@ -60,11 +92,17 @@ for i in range(0, len(plot_map)):
             identify_area_coordinates(plot_map[i][j], i, j, plot_map, shape_area)
             visited.update(shape_area)
             shape_perimeter = calculate_perimeter(shape_area)
+            vertices = calculate_vertices(shape_area)
             total_price += shape_perimeter * len(shape_area)
-            print("A region of {} plants with area: {} and perimeter: {}".format(plot_map[i][j], len(shape_area), shape_perimeter))
+            total_price_2 += vertices * len(shape_area)
+            print("A region of {} plants with area: {}, perimeter: {} and vertices: {}".format(plot_map[i][j], len(shape_area), shape_perimeter, vertices))
 print()
 
 end = time.time()
 print("Part 1 result: {}".format(total_price))
+print("The time of execution of above program is :", (end - start) * 10**3, "ms")
+print()
+
+print("Part 2 result: {}".format(total_price_2))
 print("The time of execution of above program is :", (end - start) * 10**3, "ms")
 print()
