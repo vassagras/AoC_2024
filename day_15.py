@@ -95,12 +95,3 @@ print("Part 1 result: {}".format(gps_distance))
 print("The time of execution of above program is :", (end - start) * 10 ** 3, "ms")
 print()
 
-
-
-start = time.time()
-
-
-end = time.time()
-print("Part 2 result: {}".format(gps_distance))
-print("The time of execution of above program is :", (end - start) * 10 ** 3, "ms")
-print()
