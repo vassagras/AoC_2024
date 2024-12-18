@@ -37,8 +37,6 @@ for i in range(0, MAX_X):
         else:
             row.append(".")
     memory_space.append(row)
-#for row in memory_space:
-#    print("".join(row))
 
 # Dijkstra's algorithm implementation to find the shortest path from the source to the destination node.
 distances = {} # keeps track of the distances to the unvisited nodes
