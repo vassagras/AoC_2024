@@ -23,20 +23,12 @@ def get_adjacent_vertices(cur_node, obstacles, visited_nodes, node_distances):
 start = time.time()
 file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 18"), 'r')
 
-# Initialize the memory space based on the input data
-memory_space = []
 corrupted_spaces = []
 for l in file:
     y, x = [int(e) for e in l.replace("\n", "").split(",")]
     corrupted_spaces.append((x, y))
-for i in range(0, MAX_X):
-    row = []
-    for j in range(0, MAX_Y):
-        if (i, j) in corrupted_spaces:
-            row.append("#")
-        else:
-            row.append(".")
-    memory_space.append(row)
+
+corrupted_spaces_p1 = corrupted_spaces[:1024]
 
 # Dijkstra's algorithm implementation to find the shortest path from the source to the destination node.
 distances = {} # keeps track of the distances to the unvisited nodes
@@ -49,7 +41,7 @@ shortest_path[(source_x, source_y)] = 0
 
 while (destination_x, destination_y) not in shortest_path:
     next_node = [k for k, x in distances.items() if not any(y < x for y in distances.values())][0]
-    get_adjacent_vertices(next_node, corrupted_spaces, shortest_path, distances)
+    get_adjacent_vertices(next_node, corrupted_spaces_p1, shortest_path, distances)
     shortest_path[next_node] = distances[next_node]
     distances.pop(next_node)
 
