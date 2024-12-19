@@ -1,7 +1,7 @@
 import time
 import os
 
-def identify_matching_towels(cur_design, patterns, pattern_cache):
+def check_for_matching_towels(cur_design, patterns, pattern_cache):
     """
     
     :param cur_design: current design  to be assessed
@@ -19,25 +19,25 @@ def identify_matching_towels(cur_design, patterns, pattern_cache):
 
     for towel in patterns:
         if cur_design.startswith(towel):
-            if identify_matching_towels(cur_design[len(towel):], patterns, pattern_cache):
+            if check_for_matching_towels(cur_design[len(towel):], patterns, pattern_cache):
                 pattern_cache[cur_design[len(towel):]] = True
                 return True
     pattern_cache[cur_design] = False
     return False
 
 start = time.time()
-file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 19"), 'r')
-file_t = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 19 towels"), 'r')
+file_designs = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 19 designs"), 'r')
+file_patterns = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 19 patterns"), 'r')
 
-towel_patterns = file_t.read().replace("\n", "").split(", ")
+towel_patterns = file_patterns.read().replace("\n", "").split(", ")
 designs = []
-for design in file:
+for design in file_designs:
     designs.append(design.replace("\n", ""))
 
 matched_designs = []
 cache = {}
 for design in designs:
-    if identify_matching_towels(design, towel_patterns, cache):
+    if check_for_matching_towels(design, towel_patterns, cache):
         matched_designs.append(design)
 
 end = time.time()
