@@ -32,10 +32,6 @@ racetrack = []
 for line in file:
     racetrack.append(list(line.replace("\n", "")))
 
-for row in racetrack:
-    print("".join(row))
-print()
-
 source_x = 79 # 3
 source_y = 59 # 1
 end_x = 87 # 7
