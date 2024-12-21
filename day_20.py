@@ -59,13 +59,11 @@ end_y = 39 # 5
 path = get_path(source_x, source_y, end_x, end_y, racetrack)
 path_costs = {p:len(path) - i for i, p in enumerate(path)}
 
-nbr_of_cheats = 0
 c = Counter()
 for i in range(0, len(path)):
     p1 = path[i]
     for p2 in path[i+1:]:
         if is_cheat(p1, p2, racetrack):
-            nbr_of_cheats += 1
             cheat_savings = abs(path_costs[p2] - path_costs[p1] + 2)
             c.update([cheat_savings])
 total = 0
