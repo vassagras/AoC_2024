@@ -4,11 +4,21 @@ from collections import Counter
 
 
 def get_path(x1, y1, x2, y2, racetrack_map):
+    """
+
+    :param x1: the start x-coordinate
+    :param y1: the start y-coordinate
+    :param x2: the end x-coordinate
+    :param y2: the end y-coordinate
+    :param racetrack_map: the racetrack map
+    :return:
+    """
     moves = [(1, 0), (0, 1), (-1, 0), (0, -1)]
     visited = set()
     track = []
     x, y = x1, y1
     track.append((x, y))
+    # there is only one path between the start and end points
     while x != x2 or y != y2:
         for _x, _y in [(x+dx, y+dy) for (dx, dy) in moves]:
             if (racetrack_map[_x][_y] == "." or racetrack_map[_x][_y] == "E") and (_x, _y) not in visited:
@@ -20,7 +30,17 @@ def get_path(x1, y1, x2, y2, racetrack_map):
     return track
 
 def is_cheat(point_1, point_2, track):
+    """
+
+    :param point_1: point 1 from the path
+    :param point_2: point 2 from the path
+    :param track: the racetrack map
+    :return: returns True if the distance between the two points is exactly 2, there is a wall between them, and
+    the two points are in the same row or column.
+    """
+    # the two points must have a distance of 2 i.e., p1 - wall - p2
     if abs(point_1[0] - point_2[0]) + abs(point_1[1] - point_2[1]) == 2 :
+        # the point between the two must be a wall and the two points must be in the same row or column
         point_3 = (int(point_1[0] + (point_2[0] - point_1[0]) / 2), int(point_1[1] + (point_2[1] - point_1[1]) / 2))
         if track[point_3[0]][point_3[1]] == "#" and (point_1[0] == point_2[0] or point_1[1] == point_2[1]):
             return True
@@ -37,8 +57,7 @@ source_y = 59 # 1
 end_x = 87 # 7
 end_y = 39 # 5
 path = get_path(source_x, source_y, end_x, end_y, racetrack)
-cost_of_path = len(path)
-path_costs = {p:cost_of_path - i for i, p in enumerate(path)}
+path_costs = {p:len(path) - i for i, p in enumerate(path)}
 
 nbr_of_cheats = 0
 c = Counter()
