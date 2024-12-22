@@ -2,7 +2,7 @@ import time
 import os
 import math
 
-class Randomizer:
+class PseudoRandomizer:
 
     def __init__(self, initial_secret):
         self.__secret = initial_secret
@@ -36,7 +36,7 @@ numbers = [int(n) for n in file.read().split("\n")]
 
 total = 0
 for n in numbers:
-    r = Randomizer(n)
+    r = PseudoRandomizer(n)
     for i in range(0, 2000):
         r.next_secret()
     total += r.get_secret()
