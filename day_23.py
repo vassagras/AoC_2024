@@ -9,6 +9,7 @@ file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Da
 
 # Create a directed graph
 network = DiGraph()
+# and a undirected for part 2
 undirected_network = Graph()
 nodes = set()
 for line in file:
