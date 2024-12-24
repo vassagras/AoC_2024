@@ -1,21 +1,22 @@
 import time
 import os
-from networkx import DiGraph
+from networkx import DiGraph, Graph
 from itertools import combinations
+from networkx.algorithms import find_cliques
 
 start = time.time()
 file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 23"), 'r')
 
 # Create a directed graph
 network = DiGraph()
+undirected_network = Graph()
 nodes = set()
 for line in file:
     node_1, node_2 = line.replace("\n", "").split("-")
     network.add_edge(node_1, node_2)
     network.add_edge(node_2, node_1)
+    undirected_network.add_edge(node_1, node_2)
     nodes.update([node_1, node_2])
-print(network)
-print()
 
 # identify all the valid triplets i.e., having at least a node / computer starting with t
 list_of_nodes = list(nodes)
@@ -33,3 +34,18 @@ end = time.time()
 print("Part 1 result: {}".format(inter_connected_sets))
 print("The time of execution of above program is :", (end - start) * 10 ** 3, "ms")
 print()
+
+# A fully interconnected component is equivalent to a clique from graph theory
+start = time.time()
+cliques = find_cliques(undirected_network)
+biggest_clique = set()
+for clique in cliques:
+    if len(clique) > len(biggest_clique):
+        biggest_clique = clique
+
+end = time.time()
+print("Part 2 result: {}".format(",".join(sorted(biggest_clique))))
+print("The time of execution of above program is :", (end - start) * 10 ** 3, "ms")
+print()
+
+
