@@ -83,7 +83,6 @@ print("Part 1 result: {}".format(total_nbr_of_cheats))
 print("The time of execution of above program is :", (end - start) * 10 ** 3, "ms")
 print()
 
-
 start = time.time()
 counter_part_2 = Counter()
 for i in range(0, len(path)):
