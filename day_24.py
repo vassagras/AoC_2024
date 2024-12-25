@@ -3,6 +3,13 @@ import os
 import re
 
 def logic_gate_compute(wr_1, wr_2, op):
+    """
+
+    :param wr_1: wire 1 input
+    :param wr_2: wire 2 input
+    :param op: a bitwise operator i.e. AND (&), OR (|) or XOR (^)
+    :return:
+    """
     if op == "XOR":
         return wr_1 ^ wr_2
     elif op == "OR":
