@@ -31,9 +31,7 @@ for combination in triplets:
                 network.has_edge(combination[2], combination[0])):
             inter_connected_sets += 1
 
-end = time.time()
 print("Part 1 result: {}".format(inter_connected_sets))
-print("The time of execution of above program is :", (end - start) * 10 ** 3, "ms")
 print()
 
 # A fully interconnected component is equivalent to a clique from graph theory
