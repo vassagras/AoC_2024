@@ -77,12 +77,12 @@ for l in file:
     robots.append((robot_id, start_pos, move))
     robot_id += 1
 
-for i in range(0, 10000):
+for i in range(0, 20):
     print("Iteration: {}".format(i))
     for robot in robots:
         position = robot[1]
         velocity = robot[2]
-        x, y = move_robot(position, velocity, MAX_X, MAX_Y, 1)
+        x, y = move_robot(position, velocity, MAX_X, MAX_Y, 500)
         robot[1][0] = x
         robot[1][1] = y
     robot_coordinates = [(r[1][0], r[1][1]) for r in robots]
