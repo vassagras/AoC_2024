@@ -69,20 +69,11 @@ for line in file:
     warehouse_map.append(list(line.replace("\n", "")))
 moves = file_moves.read().replace("\n", "")
 
-#print("Initial state:")
-#for row in warehouse_map:
-#    print("".join(row))
-#print()
-
 # Initial values are the coordinates of the robot
 current_x = 24
 current_y = 24
 for direction in moves:
-    #print("Move {}:".format(direction))
     current_x, current_y = move_robot(current_x, current_y, direction, warehouse_map)
-    #for row in warehouse_map:
-    #    print("".join(row))
-    #print()
 
 gps_distance = 0
 for i in range(0, len(warehouse_map)):
