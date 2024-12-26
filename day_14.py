@@ -59,3 +59,42 @@ end = time.time()
 print("Part 1 result: {}".format(safety_factor))
 print("The time of execution of above program is :", (end - start) * 10 ** 3, "ms")
 print()
+
+
+file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), r"inputs\Day 14"), 'r')
+
+REGEX = r"^p=(\d*),(\d*) v=(-?\d*),(-?\d*)\n*"
+MAX_X = 103 # 7 103
+MAX_Y = 101 # 11 101
+
+robots = []
+robot_id = 0
+for l in file:
+    elements = re.findall(REGEX, l)
+    # the input data first contain y-coordinate and then the x-coordinate
+    start_pos = [int(elements[0][1]), int(elements[0][0])]
+    move = (int(elements[0][3]), int(elements[0][2]))
+    robots.append((robot_id, start_pos, move))
+    robot_id += 1
+
+for i in range(0, 10000):
+    print("Iteration: {}".format(i))
+    print("------------------------------------------------------------------")
+    for robot in robots:
+        position = robot[1]
+        velocity = robot[2]
+        x, y = move_robot(position, velocity, MAX_X, MAX_Y, 1)
+        robot[1][0] = x
+        robot[1][1] = y
+    robot_coordinates = [(r[1][0], r[1][1]) for r in robots]
+    for k in range(0, MAX_X):
+        row = ""
+        for j in range(0, MAX_Y):
+            if (k, j) in robot_coordinates:
+                row += "1"
+            else:
+                row += "."
+        print(row)
+    print()
+    print()
+
