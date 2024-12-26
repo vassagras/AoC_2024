@@ -79,7 +79,6 @@ for l in file:
 
 for i in range(0, 10000):
     print("Iteration: {}".format(i))
-    print("------------------------------------------------------------------")
     for robot in robots:
         position = robot[1]
         velocity = robot[2]
@@ -96,5 +95,3 @@ for i in range(0, 10000):
                 row += "."
         print(row)
     print()
-    print()
-
